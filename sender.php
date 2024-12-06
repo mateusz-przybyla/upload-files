@@ -1,8 +1,9 @@
 <?php
 
-session_start();
+//error_reporting(E_ALL);
+//ini_set('display_errors', 'On');
 
-require_once "database.php";
+require_once __DIR__ . "/database.php";
 
 if (!empty($_FILES['file'])) {
   $gigaBytetoByte = 1073741824;
@@ -16,7 +17,8 @@ if (!empty($_FILES['file'])) {
     exit;
   }
 
-  $targetDir = "uploads/";
+  $targetDir = __DIR__ . "/" . "uploads/";
+
   $filename = basename($_FILES['file']['name']);
   $targetFilePath = $targetDir . $filename;
 

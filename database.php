@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once __DIR__ . '/config.php';
 
 try {
   $dsn = "pgsql:host=$host;port=5432;dbname=$database;";

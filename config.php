@@ -1,6 +1,6 @@
 <?php
 
-$host = '';
-$user = '';
+$host = 'localhost';
+$user = 'postgres';
 $password = '';
-$database = '';
+$database = 'upload_files';
