@@ -8,7 +8,7 @@ Skrypt zapisuję nazwę przesłanego pliku w bazie danych PostgreSQL.
 
 Dodatkowe wymagania:
 
-- pliki Audio (mp3, wav) - link do pobrania ma zawierać fragment pliku o długości 120s.
+- pliki Audio (mp3, wav) - link do pobrania ma zawierać fragment o długości 120s.
 
 W związku z powyższym długość pliku audio, który ma być dostepny do pobrania w wersji skróconej można ustawić w pliku .env, pod zmienną 'AUDIO_DURATION'.
 
@@ -37,8 +37,8 @@ Uruchom projekt lokalnie na swoim pc:
 
 Konfiguracja biblioteki FFmpeg w projekcie:
 
-- w pliku .env należy wypełnić pola FFMPEG_BINARIES i FFPROBE_BINARIES, czyli ścieżki do wykonalnych plików ffmpeq.exe i ffprobe.exe, ścieżki zależą od systemu operacyjnego,
-- zauważyłem, że metoda open() klasy FFMpeg błędnie odczytuje format pliku. Dzieje się to podczas użycia metody clip() do skróenia pliku audio, gdzie plik audio jest traktowany jako plik video i wywoływana jest metoda clip() klasy VideoFilters zamiast klasy AudioFilters (czytałem na różnych forach, że taki problem z plikami audio występuje).
+- w pliku .env należy wypełnić pola FFMPEG_BINARIES i FFPROBE_BINARIES, czyli ścieżki do plików wykonywalnych ffmpeq.exe i ffprobe.exe (ścieżki zależą od systemu operacyjnego),
+- zauważyłem, że metoda open() klasy FFMpeg błędnie odczytuje format pliku. Dzieje się to podczas użycia metody clip() do skrócenia pliku audio, gdzie plik audio jest traktowany jako plik video i wywoływana jest metoda clip() klasy VideoFilters zamiast klasy AudioFilters (czytałem na różnych forach, że taki problem z plikami audio występuje).\
   Rozwiązanie: aby skracanie plików audio działało poprawnie, należy wprowadzić dodatkowy argument ($type) w metodzie open() klasy FFMpeg jak poniżej:
 
   ```php
@@ -58,11 +58,13 @@ Konfiguracja biblioteki FFmpeg w projekcie:
   }
   ```
 
-  teraz funkcja dokładnie wie, z jakim formatem mamy do czynienia, natomiast podczas wywołania metody open(), dodaję drugi parametr jak poniżej:
+  od teraz funkcja dokładnie wie, z jakim formatem mamy do czynienia, natomiast podczas wywołania metody open(), dodaję drugi argument jak poniżej:
 
   ```php
   $audio = $ffmpeg->open($targetFilePath, "audio");
   ```
+
+  Powyższe zmiany dokonujemy oczywiście po zainstalowaniu zależności, tj. pakietu php-ffmpeg przy użyciu Composera.
 
 ## Screenshots
 
