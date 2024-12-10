@@ -86,7 +86,7 @@ Konfiguracja biblioteki FFmpeg w projekcie:
 - biblioteka FFmpeg - pozwalająca modyfikować, konwertować lub skracać pliki audio i video,
 - Composer - zarządzanie zależnościami.
 
-## Pomoce
+## Useful resources
 
 - https://ffmpeg.org/
 - https://github.com/PHP-FFMpeg/PHP-FFMpeg?tab=readme-ov-file
