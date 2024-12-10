@@ -74,7 +74,6 @@ function uploadFile(file) {
   var li = document.createElement("li");
   li.classList.add("in-prog");
   li.innerHTML = `
-      
         <div class="col">
             <img src="icons/file.png" alt="fileIcon" height="50">
         </div>
@@ -109,12 +108,14 @@ function uploadFile(file) {
     li.classList.remove("in-prog");
   };
   http.upload.onprogress = (e) => {
+    //console.log(e);
     var percent_complete = (e.loaded / e.total) * 100;
+    //console.log(Math.round(percent_complete) + "%");
     li.querySelectorAll("span")[0].innerHTML =
       Math.round(percent_complete) + "%";
     li.querySelectorAll("span")[1].style.width = percent_complete + "%";
   };
-  http.open("POST", "sender.php", true);
+  http.open("POST", "./src/sender.php", true);
   http.send(data);
 
   li.querySelector(".cross").onclick = () => http.abort();
