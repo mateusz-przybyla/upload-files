@@ -144,6 +144,8 @@ body {
 .list-section li .col:nth-child(1) {
   flex: 0.15;
   text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .list-section li .col:nth-child(2) {
   flex: 0.75;
